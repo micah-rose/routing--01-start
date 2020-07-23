@@ -8,9 +8,7 @@ import {Route, NavLink, Switch, Redirect} from 'react-router-dom';
 class Blog extends Component {
 
     state = {
-        posts: [],
-        selectedPostId: null,
-        error: false
+        auth: false
     }
 
     render () {
@@ -40,19 +38,12 @@ class Blog extends Component {
             <Route path="/" render={() => <h1>Home 2</h1>}/> */}
                        
             <Switch>
-                <Route path="/new-post" component={NewPost} />
+                {this.state.auth ? <Route path="/new-post" component={NewPost} /> : null}
                 <Route path="/posts" component={Posts} />
-                <Redirect from="/" to="/posts" />
+                <Route  render={() => <h1>Not found</h1>} />
+                {/* <Redirect from="/" to="/posts" /> */}
                 {/* <Route path="/" component={Posts} /> */}
             </Switch>
-
-            {/* <section>
-            <FullPost id={this.state.selectedPostId} />
-            </section>
-            <section>
-            <NewPost />
-            </section> */}
-
             </div>
         );
     }
