@@ -6,6 +6,12 @@ import Posts from '../Blog/Posts/Posts';
 
 class Blog extends Component {
 
+    state = {
+        posts: [],
+        selectedPostId: null,
+        error: false
+    }
+
     render () {
 
 
